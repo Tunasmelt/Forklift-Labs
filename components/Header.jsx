@@ -1,5 +1,6 @@
 const nav = [
   { label: "Work", href: "#work" },
+  { label: "Labs", href: "#labs" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
