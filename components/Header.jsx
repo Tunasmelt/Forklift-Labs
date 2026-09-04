@@ -9,7 +9,7 @@ export default function Header() {
     <header>
       <div className="wrap nav">
         <a className="logo" href="#top">
-          <img src="/logo.svg" alt="" width={28} height={28} />
+          <img src="/logo.svg" alt="" width={34} height={34} />
           Forklift Labs
         </a>
         <nav className="links">

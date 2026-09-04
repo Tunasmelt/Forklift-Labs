@@ -1,31 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 265">
-  <g stroke="#ffffff" stroke-width="5" stroke-linejoin="round">
-    <!-- box 1: navy + blue, shared-apex top -->
-    <polygon points="95,15 20,60 95,105" fill="#313b4a" />
-    <polygon points="95,15 95,105 170,60" fill="#4a86bb" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 265" fill="none" stroke="#2b3140" stroke-width="12" stroke-linejoin="round" stroke-linecap="round">
+  <!-- F: top arm -->
+  <polygon points="70,35 134,71 102,89 38,53" />
+  <polygon points="70,35 134,71 134,113 70,77" />
+  <polygon points="70,35 38,53 38,95 70,77" />
 
-    <!-- box 1: navy front-left face (flat bottom) -->
-    <polygon points="20,60 95,105 95,152 20,107" fill="#3a4556" />
-    <polygon points="20,107 95,152 95,200 20,155" fill="#262e3a" />
+  <!-- F: stem -->
+  <polygon points="38,53 70,71 38,89 6,71" />
+  <polygon points="38,53 70,71 70,166 38,148" />
+  <polygon points="38,53 6,71 6,166 38,148" />
 
-    <!-- box 1: blue front-right face (pointed tail) -->
-    <polygon points="170,60 95,105 95,165 170,107.5" fill="#5a97cc" />
-    <polygon points="170,107.5 95,165 95,225 132,247 170,155" fill="#3d729f" />
+  <!-- F: middle arm -->
+  <polygon points="60,140 124,176 92,194 28,158" />
+  <polygon points="60,140 124,176 124,216 60,180" />
 
-    <!-- box 2: gold, detached, floating lower-right -->
-    <polygon points="195,45 150,85 195,125" fill="#e0b45a" />
-    <polygon points="195,45 195,125 240,85" fill="#d7a23f" />
+  <!-- L: stem -->
+  <polygon points="210,15 242,33 210,51 178,33" />
+  <polygon points="210,15 242,33 242,223 210,205" />
+  <polygon points="210,15 178,33 178,223 210,205" />
 
-    <polygon points="150,85 195,125 195,157 150,117" fill="#e0b45a" />
-    <polygon points="150,117 195,157 195,190 150,190" fill="#c48f34" />
-
-    <polygon points="240,85 195,125 195,157 240,117" fill="#d7a23f" />
-    <polygon points="240,117 195,157 195,190 240,190" fill="#b98530" />
-  </g>
-
-  <!-- upward arrow -->
-  <polygon
-    points="101,58 130,98 111,98 111,178 91,178 91,98 72,98"
-    fill="#ffffff"
-  />
+  <!-- L: foot -->
+  <polygon points="178,175 242,211 210,229 146,193" />
+  <polygon points="178,175 242,211 242,249 178,213" />
 </svg>
