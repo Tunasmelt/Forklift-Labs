@@ -1,21 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 230">
-  <g stroke="#f4f1ec" stroke-width="5" stroke-linejoin="round">
-    <!-- top face, left half -->
-    <polygon points="100,15 100,108 25,62" fill="#2b3547" />
-    <!-- top face, right half -->
-    <polygon points="100,15 175,62 100,108" fill="#3576b0" />
-    <!-- left face, upper -->
-    <polygon points="25,62 100,108 100,154 25,108" fill="#2b3547" />
-    <!-- left face, lower (pointed) -->
-    <polygon points="25,108 100,154 100,200 62,222 25,154" fill="#3576b0" />
-    <!-- right face, upper -->
-    <polygon points="175,62 100,108 100,154 175,108" fill="#d7a23f" />
-    <!-- right face, lower -->
-    <polygon points="175,108 100,154 100,200 175,154" fill="#cf9a3a" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 265">
+  <g stroke="#ffffff" stroke-width="5" stroke-linejoin="round">
+    <!-- box 1: navy + blue, shared-apex top -->
+    <polygon points="95,15 20,60 95,105" fill="#313b4a" />
+    <polygon points="95,15 95,105 170,60" fill="#4a86bb" />
+
+    <!-- box 1: navy front-left face (flat bottom) -->
+    <polygon points="20,60 95,105 95,152 20,107" fill="#3a4556" />
+    <polygon points="20,107 95,152 95,200 20,155" fill="#262e3a" />
+
+    <!-- box 1: blue front-right face (pointed tail) -->
+    <polygon points="170,60 95,105 95,165 170,107.5" fill="#5a97cc" />
+    <polygon points="170,107.5 95,165 95,225 132,247 170,155" fill="#3d729f" />
+
+    <!-- box 2: gold, detached, floating lower-right -->
+    <polygon points="195,45 150,85 195,125" fill="#e0b45a" />
+    <polygon points="195,45 195,125 240,85" fill="#d7a23f" />
+
+    <polygon points="150,85 195,125 195,157 150,117" fill="#e0b45a" />
+    <polygon points="150,117 195,157 195,190 150,190" fill="#c48f34" />
+
+    <polygon points="240,85 195,125 195,157 240,117" fill="#d7a23f" />
+    <polygon points="240,117 195,157 195,190 240,190" fill="#b98530" />
   </g>
+
   <!-- upward arrow -->
   <polygon
-    points="108,55 138,95 118,95 118,175 98,175 98,95 78,95"
-    fill="#f4f1ec"
+    points="101,58 130,98 111,98 111,178 91,178 91,98 72,98"
+    fill="#ffffff"
   />
 </svg>
