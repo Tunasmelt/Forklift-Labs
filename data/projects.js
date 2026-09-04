@@ -65,9 +65,3 @@ export const projects = [
     arch: ["Content", "Local runtime", "Learning experience", "Offline product"],
   },
 ];
-
-export const labs = [
-  { n: "01", title: "Drifter", body: "Agent reliability, retrieval, evaluation and observability." },
-  { n: "02", title: "Graphify", body: "Code intelligence through structural knowledge graphs." },
-  { n: "03", title: "CodeLearn", body: "Local-first product engineering for offline learning." },
-];

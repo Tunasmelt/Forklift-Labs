@@ -23,6 +23,9 @@ const newsreader = Newsreader({
 export const metadata = {
   title: "Forklift Labs — Selected Work",
   description: "Software, systems and applied intelligence.",
+  icons: {
+    icon: "/logo.svg",
+  },
 };
 
 export default function RootLayout({ children }) {

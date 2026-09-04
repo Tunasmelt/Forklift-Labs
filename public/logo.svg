@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 230">
+  <g stroke="#f4f1ec" stroke-width="5" stroke-linejoin="round">
+    <!-- top face, left half -->
+    <polygon points="100,15 100,108 25,62" fill="#2b3547" />
+    <!-- top face, right half -->
+    <polygon points="100,15 175,62 100,108" fill="#3576b0" />
+    <!-- left face, upper -->
+    <polygon points="25,62 100,108 100,154 25,108" fill="#2b3547" />
+    <!-- left face, lower (pointed) -->
+    <polygon points="25,108 100,154 100,200 62,222 25,154" fill="#3576b0" />
+    <!-- right face, upper -->
+    <polygon points="175,62 100,108 100,154 175,108" fill="#d7a23f" />
+    <!-- right face, lower -->
+    <polygon points="175,108 100,154 100,200 175,154" fill="#cf9a3a" />
+  </g>
+  <!-- upward arrow -->
+  <polygon
+    points="108,55 138,95 118,95 118,175 98,175 98,95 78,95"
+    fill="#f4f1ec"
+  />
+</svg>
