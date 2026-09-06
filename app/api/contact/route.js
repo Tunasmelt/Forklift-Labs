@@ -1,7 +1,14 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Constructed lazily inside the handler, not at module scope: `new Resend()`
+// throws synchronously when RESEND_API_KEY is unset, which happens during
+// Next's build-time page-data collection for this route and fails the whole
+// build (not just requests) whenever the env var isn't configured yet.
+function getResendClient() {
+  if (!process.env.RESEND_API_KEY) return null;
+  return new Resend(process.env.RESEND_API_KEY);
+}
 
 const TO_EMAIL = process.env.CONTACT_TO_EMAIL || "hello@forkliftlabs.dev";
 const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || "Forklift Labs <onboarding@resend.dev>";
@@ -38,6 +45,15 @@ export async function POST(request) {
 
   if (message.length > 5000) {
     return NextResponse.json({ error: "Message is too long." }, { status: 400 });
+  }
+
+  const resend = getResendClient();
+  if (!resend) {
+    console.error("Contact form misconfigured: RESEND_API_KEY is not set.");
+    return NextResponse.json(
+      { error: "The contact form isn't set up yet. Email hello@forkliftlabs.dev directly." },
+      { status: 500 }
+    );
   }
 
   try {
