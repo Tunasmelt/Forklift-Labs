@@ -1,8 +1,67 @@
+"use client";
+
+import { useState } from "react";
+import Script from "next/script";
 import Reveal from "./Reveal";
 
+const PROJECT_TYPES = [
+  "Client work",
+  "Product build",
+  "AI systems",
+  "Something else",
+];
+
+const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL || "https://calendly.com/your-slug/intro-call";
+
+const initialForm = { name: "", email: "", projectType: "", message: "", company: "" };
+
 export default function Contact() {
+  const [form, setForm] = useState(initialForm);
+  const [status, setStatus] = useState("idle"); // idle | sending | success | error
+  const [errorMsg, setErrorMsg] = useState("");
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setForm((f) => ({ ...f, [name]: value }));
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setStatus("sending");
+    setErrorMsg("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data?.error || "Something went wrong.");
+      }
+
+      setStatus("success");
+      setForm(initialForm);
+    } catch (err) {
+      setStatus("error");
+      setErrorMsg(err.message || "Something went wrong. Please try again.");
+    }
+  }
+
+  function openCalendly() {
+    if (typeof window !== "undefined" && window.Calendly) {
+      window.Calendly.initPopupWidget({ url: CALENDLY_URL });
+    }
+  }
+
   return (
     <section className="contact" id="contact">
+      <Script
+        src="https://assets.calendly.com/assets/external/widget.js"
+        strategy="lazyOnload"
+      />
       <div className="wrap">
         <Reveal>
           <p className="label" style={{ color: "var(--accent)" }}>Have something difficult to build?</p>
@@ -15,7 +74,93 @@ export default function Contact() {
             Client work, product builds, AI systems, or a technically awkward problem
             that needs a builder.
           </p>
-          <a className="mail rule-link" href="mailto:hello@forkliftlabs.dev">hello@forkliftlabs.dev</a>
+
+          {status === "success" ? (
+            <p className="form-success">
+              Thanks — message sent. I&apos;ll get back to you shortly.
+            </p>
+          ) : (
+            <form className="contact-form" onSubmit={handleSubmit}>
+              {/* Honeypot field, hidden from real users */}
+              <input
+                type="text"
+                name="company"
+                value={form.company}
+                onChange={handleChange}
+                autoComplete="off"
+                tabIndex={-1}
+                className="hp-field"
+                aria-hidden="true"
+              />
+
+              <div className="form-row">
+                <div className="field">
+                  <label htmlFor="name">Name</label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    value={form.name}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="field">
+                  <label htmlFor="email">Email</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="field">
+                <label htmlFor="projectType">Project type</label>
+                <select
+                  id="projectType"
+                  name="projectType"
+                  value={form.projectType}
+                  onChange={handleChange}
+                >
+                  <option value="">Select one</option>
+                  {PROJECT_TYPES.map((t) => (
+                    <option key={t} value={t}>{t}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="field">
+                <label htmlFor="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  value={form.message}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              {status === "error" && (
+                <p className="form-error">{errorMsg}</p>
+              )}
+
+              <button type="submit" className="submit-btn" disabled={status === "sending"}>
+                {status === "sending" ? "Sending…" : "Send message"}
+              </button>
+            </form>
+          )}
+
+          <div className="contact-alt">
+            <a className="mail rule-link" href="mailto:hello@forkliftlabs.dev">hello@forkliftlabs.dev</a>
+            <button type="button" className="calendly-link rule-link" onClick={openCalendly}>
+              or book a call →
+            </button>
+          </div>
         </Reveal>
 
         <footer className="site-footer">
