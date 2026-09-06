@@ -13,7 +13,16 @@ const PROJECT_TYPES = [
 
 const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL || "https://calendly.com/your-slug/intro-call";
 
-const initialForm = { name: "", email: "", projectType: "", message: "", company: "" };
+const initialForm = {
+  name: "",
+  email: "",
+  phone: "",
+  company: "",
+  country: "",
+  projectType: "",
+  message: "",
+  website: "", // honeypot — distinct from the real "company" field
+};
 
 export default function Contact() {
   const [form, setForm] = useState(initialForm);
@@ -76,16 +85,27 @@ export default function Contact() {
           </p>
 
           {status === "success" ? (
-            <p className="form-success">
-              Thanks — message sent. I&apos;ll get back to you shortly.
-            </p>
+            <div>
+              <p className="form-success">
+                Thanks — message sent. I&apos;ll get back to you shortly.
+              </p>
+              {/* Booking is only offered after a validated submission, so the
+                  calendar isn't exposed to casual link-sharing or bots. */}
+              {CALENDLY_URL && (
+                <div className="contact-alt">
+                  <button type="button" className="calendly-link rule-link" onClick={openCalendly}>
+                    Prefer to talk it through? Book a call →
+                  </button>
+                </div>
+              )}
+            </div>
           ) : (
             <form className="contact-form" onSubmit={handleSubmit}>
               {/* Honeypot field, hidden from real users */}
               <input
                 type="text"
-                name="company"
-                value={form.company}
+                name="website"
+                value={form.website}
                 onChange={handleChange}
                 autoComplete="off"
                 tabIndex={-1}
@@ -118,19 +138,54 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div className="field">
-                <label htmlFor="projectType">Project type</label>
-                <select
-                  id="projectType"
-                  name="projectType"
-                  value={form.projectType}
-                  onChange={handleChange}
-                >
-                  <option value="">Select one</option>
-                  {PROJECT_TYPES.map((t) => (
-                    <option key={t} value={t}>{t}</option>
-                  ))}
-                </select>
+              <div className="form-row">
+                <div className="field">
+                  <label htmlFor="phone">Phone number</label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    value={form.phone}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="field">
+                  <label htmlFor="country">Country</label>
+                  <input
+                    id="country"
+                    name="country"
+                    type="text"
+                    value={form.country}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
+
+              <div className="form-row">
+                <div className="field">
+                  <label htmlFor="company">Company</label>
+                  <input
+                    id="company"
+                    name="company"
+                    type="text"
+                    value={form.company}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="field">
+                  <label htmlFor="projectType">Project type</label>
+                  <select
+                    id="projectType"
+                    name="projectType"
+                    value={form.projectType}
+                    onChange={handleChange}
+                  >
+                    <option value="">Select one</option>
+                    {PROJECT_TYPES.map((t) => (
+                      <option key={t} value={t}>{t}</option>
+                    ))}
+                  </select>
+                </div>
               </div>
 
               <div className="field">
@@ -155,12 +210,11 @@ export default function Contact() {
             </form>
           )}
 
-          <div className="contact-alt">
-            <a className="mail rule-link" href="mailto:hello@forkliftlabs.dev">hello@forkliftlabs.dev</a>
-            <button type="button" className="calendly-link rule-link" onClick={openCalendly}>
-              or book a call →
-            </button>
-          </div>
+          {status !== "success" && (
+            <div className="contact-alt">
+              <a className="mail rule-link" href="mailto:hello@forkliftlabs.dev">hello@forkliftlabs.dev</a>
+            </div>
+          )}
         </Reveal>
 
         <footer className="site-footer">
