@@ -21,7 +21,8 @@ export default function Gallery() {
         <Reveal className="section-head">
           <h2>Selected work</h2>
           <span>
-            Hover to pause / click to open
+            <span className="hover-hint">Hover to pause / click to open</span>
+            <span className="touch-hint">Tap to open</span>
           </span>
         </Reveal>
       </div>

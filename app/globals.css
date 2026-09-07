@@ -17,7 +17,13 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  /* Keeps anchor-jump targets (#work, #labs, #about, #contact) from
+     landing underneath the sticky header, which would otherwise clip
+     the top of whichever section was just scrolled to. */
+  scroll-padding-top: 76px;
+}
 body {
   margin: 0;
   overflow-x: hidden;
@@ -113,6 +119,64 @@ header {
 nav.links { display: flex; gap: 28px; color: var(--muted-foreground); }
 nav.links a:hover { color: var(--accent); }
 
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.menu-toggle span {
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--ink);
+  transition: transform 0.3s var(--ease-editorial), opacity 0.3s var(--ease-editorial);
+}
+.menu-toggle.open span:first-child { transform: translateY(3px) rotate(45deg); }
+.menu-toggle.open span:last-child { transform: translateY(-3px) rotate(-45deg); }
+
+/* Positioned absolutely (header is already `position: sticky`, which
+   establishes a containing block for it) so the open panel overlays the
+   page instead of pushing content down. Letting it push content changes
+   document height while a link's anchor-scroll is being computed, so a
+   click lands the section short/over depending on how far the collapse
+   animation had gotten by the time the browser resolves the jump. */
+.mobile-nav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  max-height: 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 12px 24px -12px color-mix(in oklab, var(--ink) 25%, transparent);
+  transition: max-height 0.35s var(--ease-editorial);
+}
+.mobile-nav .wrap { display: flex; flex-direction: column; }
+.mobile-nav a {
+  padding: 16px 0;
+  border-top: 1px solid var(--border);
+  color: var(--muted-foreground);
+  font-size: 12px;
+}
+.mobile-nav a:hover { color: var(--accent); }
+
+@media (max-width: 720px) {
+  nav.links { display: none; }
+  .menu-toggle { display: flex; }
+  .mobile-nav { display: block; }
+  .mobile-nav.open { max-height: 320px; }
+}
+
 /* Hero */
 .hero { padding: 64px 0 40px; }
 .hero-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 32px; }
@@ -162,6 +226,14 @@ nav.links a:hover { color: var(--accent); }
 .section-head h2 { font-family: var(--f-serif); font-weight: 500; font-size: 24px; margin: 0; }
 .section-head span { color: var(--muted-foreground); }
 .section-head span .accent { color: var(--accent); }
+
+/* "Hover to pause" is meaningless on a touchscreen with no hover state —
+   swap to touch-appropriate copy purely by media feature, no JS/UA sniffing. */
+.touch-hint { display: none; }
+@media (hover: none) {
+  .hover-hint { display: none; }
+  .touch-hint { display: inline; }
+}
 
 .marquee-viewport { position: relative; overflow: hidden; }
 .marquee-viewport::before,
@@ -417,6 +489,11 @@ nav.links a:hover { color: var(--accent); }
 
 @media (max-width: 640px) {
   .form-row { grid-template-columns: 1fr; }
+  /* iOS Safari auto-zooms the viewport on focusing any input under 16px;
+     bump just the mobile form controls rather than the whole type scale. */
+  .field input,
+  .field select,
+  .field textarea { font-size: 16px; }
 }
 
 footer.site-footer {
