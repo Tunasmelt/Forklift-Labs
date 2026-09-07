@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="760" viewBox="0 0 900 760">
+  <rect width="900" height="760" fill="#0a0a0a"/>
+  <g stroke="#1c1c1c" stroke-width="1">
+    <path d="M0 100 H900 M0 200 H900 M0 300 H900 M0 400 H900" opacity="0.5"/>
+    <path d="M150 0 V760 M300 0 V760 M450 0 V760 M600 0 V760 M750 0 V760" opacity="0.35"/>
+  </g>
+  <text x="40" y="40" font-family="'Courier New', monospace" font-weight="700" font-size="18" fill="#f4f4f4">stakked <tspan font-size="11" fill="#7a7a7a">// creative os</tspan></text>
+  <rect x="40" y="140" width="220" height="28" rx="14" fill="none" stroke="#2a2a2a"/>
+  <text x="55" y="158" font-family="'Courier New', monospace" font-size="11" fill="#d4ff3f">// CANVAS FOR CREATORS</text>
+  <g font-family="Arial, sans-serif" font-weight="800" font-size="46" fill="#f4f4f4">
+    <text x="40" y="240">Make anything visual.</text>
+    <text x="40" y="300" fill="#d4ff3f">Ship it in one click.</text>
+  </g>
+  <text x="40" y="350" font-family="Arial, sans-serif" font-size="15" fill="#9a9a9a">Drag-and-drop canvas — build graphics, webpages, and</text>
+  <text x="40" y="375" font-family="Arial, sans-serif" font-size="15" fill="#9a9a9a">digital art, then publish to a live URL.</text>
+  <rect x="40" y="415" width="180" height="42" fill="#d4ff3f"/>
+  <text x="130" y="441" text-anchor="middle" font-family="'Courier New', monospace" font-weight="700" font-size="13" fill="#0a0a0a">Start creating free</text>
+  <g font-family="'Courier New', monospace" font-size="10" fill="#7a7a7a">
+    <text x="40" y="700">Text</text>
+    <text x="110" y="700">Image</text>
+    <text x="190" y="700">Shape</text>
+    <text x="270" y="700">Line</text>
+    <text x="340" y="700">Container</text>
+    <text x="450" y="700">Button</text>
+    <text x="540" y="700">Icon</text>
+    <text x="610" y="700">Video</text>
+  </g>
+</svg>

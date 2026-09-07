@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="760" viewBox="0 0 900 760">
+  <defs>
+    <radialGradient id="glow2" cx="50%" cy="45%" r="55%">
+      <stop offset="0" stop-color="#2a1f0c"/>
+      <stop offset="1" stop-color="#0a0908"/>
+    </radialGradient>
+  </defs>
+  <rect width="900" height="760" fill="url(#glow2)"/>
+  <g fill="#f5b942" opacity="0.5">
+    <circle cx="180" cy="220" r="30"/>
+    <circle cx="740" cy="260" r="24"/>
+    <circle cx="450" cy="380" r="46"/>
+  </g>
+  <g stroke="#5a4a2a" stroke-width="1" opacity="0.6">
+    <line x1="180" y1="220" x2="450" y2="380"/>
+    <line x1="740" y1="260" x2="450" y2="380"/>
+    <line x1="300" y1="150" x2="450" y2="380"/>
+    <line x1="600" y1="150" x2="450" y2="380"/>
+  </g>
+  <rect x="330" y="90" width="240" height="30" rx="15" fill="none" stroke="#5a4a2a"/>
+  <text x="450" y="110" text-anchor="middle" font-family="'Courier New', monospace" font-size="11" fill="#f5b942">AI CONTEXT PLATFORM FOR DEVS</text>
+  <g font-family="Arial, sans-serif" font-weight="800" font-size="42" fill="#f4efe6" text-anchor="middle">
+    <text x="450" y="470">Your project context,</text>
+    <text x="450" y="522" fill="#f5b942">always in the room.</text>
+  </g>
+  <rect x="360" y="570" width="150" height="44" rx="22" fill="#f5b942"/>
+  <text x="435" y="597" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="14" fill="#161311">Start free</text>
+  <text x="40" y="40" font-family="Arial, sans-serif" font-weight="700" font-size="20" fill="#f4efe6">Reminisce</text>
+</svg>

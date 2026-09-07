@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="760" viewBox="0 0 900 760">
+  <defs>
+    <radialGradient id="smoke" cx="50%" cy="90%" r="60%">
+      <stop offset="0" stop-color="#3a0c0c"/>
+      <stop offset="1" stop-color="#0a0a0a"/>
+    </radialGradient>
+  </defs>
+  <rect width="900" height="760" fill="#0a0a0a"/>
+  <rect y="380" width="900" height="380" fill="url(#smoke)"/>
+  <g font-family="Arial, sans-serif" font-weight="900" font-size="52" text-anchor="middle">
+    <text x="450" y="330" fill="#f4f4f4">DISCOVER YOUR</text>
+    <text x="450" y="400" fill="#e0322e">MUSIC DNA</text>
+  </g>
+  <text x="450" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#b8b0ac">Drop a playlist to uncover what your music really says about you.</text>
+  <rect x="360" y="490" width="110" height="42" fill="#e0322e"/>
+  <text x="415" y="516" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="13" fill="#f4f4f4">Analyze</text>
+  <rect x="480" y="490" width="120" height="42" fill="none" stroke="#5a2020"/>
+  <text x="540" y="516" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="13" fill="#e0322e">Compare</text>
+  <text x="40" y="40" font-family="Arial, sans-serif" font-weight="800" font-size="20" letter-spacing="1" fill="#e0322e">ANTIDOTE</text>
+</svg>
